@@ -67,7 +67,6 @@
         <uvan-icon name="search" size="18" />
       </template>
     </uvan-nav-bar>
-    <view class="test">testtesttest</view>
   </view>
 </template>
 
@@ -75,8 +74,5 @@
 .demo-nav-bar {
   width: 100%;
   min-height: 100vh;
-  .test {
-    padding-top: 150vh;
-  }
 }
 </style>
