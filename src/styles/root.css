@@ -1,0 +1,76 @@
+:root, page {
+  /* Color Palette */
+  --uvan-black: #000;
+  --uvan-white: #fff;
+  --uvan-gray-1: #f7f8fa;
+  --uvan-gray-2: #f2f3f5;
+  --uvan-gray-3: #ebedf0;
+  --uvan-gray-4: #dcdee0;
+  --uvan-gray-5: #c8c9cc;
+  --uvan-gray-6: #969799;
+  --uvan-gray-7: #646566;
+  --uvan-gray-8: #323233;
+  --uvan-red: #ee0a24;
+  --uvan-blue: #1989fa;
+  --uvan-orange: #ff976a;
+  --uvan-orange-dark: #ed6a0c;
+  --uvan-orange-light: #fffbe8;
+  --uvan-green: #07c160;
+
+  /* Gradient Colors */
+  --uvan-gradient-red: linear-gradient(to right, #ff6034, #ee0a24);
+  --uvan-gradient-orange: linear-gradient(to right, #ffd01e, #ff8917);
+
+  /* Component Colors */
+  --uvan-primary-color: var(--uvan-blue);
+  --uvan-success-color: var(--uvan-green);
+  --uvan-danger-color: var(--uvan-red);
+  --uvan-warning-color: var(--uvan-orange);
+  --uvan-text-color: var(--uvan-gray-8);
+  --uvan-text-color-2: var(--uvan-gray-6);
+  --uvan-text-color-3: var(--uvan-gray-5);
+  --uvan-text-link-color: #576b95;
+  --uvan-active-color: var(--uvan-gray-2);
+  --uvan-active-opacity: 0.6;
+  --uvan-disabled-opacity: 0.5;
+  --uvan-background-color: var(--uvan-gray-1);
+  --uvan-background-color-light: var(--uvan-white);
+
+  /* Padding */
+  --uvan-padding-base: 8rpx;
+  --uvan-padding-xs: 16rpx;
+  --uvan-padding-sm: 24rpx;
+  --uvan-padding-md: 32rpx;
+  --uvan-padding-lg: 48rpx;
+  --uvan-padding-xl: 64rpx;
+
+  /* Font */
+  --uvan-font-size-xs: 20rpx;
+  --uvan-font-size-sm: 24rpx;
+  --uvan-font-size-md: 28rpx;
+  --uvan-font-size-lg: 32rpx;
+  --uvan-font-weight-bold: 500;
+  --uvan-line-height-xs: 28rpx;
+  --uvan-line-height-sm: 36rpx;
+  --uvan-line-height-md: 40rpx;
+  --uvan-line-height-lg: 44rpx;
+  --uvan-base-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB',
+    'Microsoft Yahei', sans-serif;
+  --uvan-price-integer-font-family: Avenir-Heavy, PingFang SC, Helvetica Neue,
+    Arial, sans-serif;
+
+  /* Animation */
+  --uvan-animation-duration-base: 0.3s;
+  --uvan-animation-duration-fast: 0.2s;
+  --uvan-animation-timing-function-enter: ease-out;
+  --uvan-animation-timing-function-leave: ease-in;
+
+  /* Border */
+  --uvan-border-color: var(--uvan-gray-3);
+  --uvan-border-width-base: 1px;
+  --uvan-border-radius-sm: 4rpx;
+  --uvan-border-radius-md: 8rpx;
+  --uvan-border-radius-lg: 16rpx;
+  --uvan-border-radius-max: 999px;
+}
