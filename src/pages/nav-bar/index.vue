@@ -1,39 +1,30 @@
 <script lang="ts" setup>
-  const clickNavLeft = () => {
-    // #ifndef H5
-    uni.navigateBack({
-      delta: 1
-    })
-    // #endif
-    // #ifdef H5
-    window.history.back()
-    // #endif
-  }
-  const clickLeft = () => {
-    uni.showToast({
-      title: '点击了左侧',
-      icon: 'none'
-    })
-  }
-  const clickRight = () => {
-    uni.showToast({
-      title: '点击了右侧',
-      icon: 'none'
-    })
-  }
+const clickNavLeft = () => {
+	// #ifndef H5
+	uni.navigateBack({
+		delta: 1
+	})
+	// #endif
+	// #ifdef H5
+	window.history.back()
+	// #endif
+}
+const clickLeft = () => {
+	uni.showToast({
+		title: '点击了左侧',
+		icon: 'none'
+	})
+}
+const clickRight = () => {
+	uni.showToast({
+		title: '点击了右侧',
+		icon: 'none'
+	})
+}
 </script>
 
 <template>
   <view class="demo-page demo-nav-bar">
-    <uvan-nav-bar
-      title="标题"
-      left-arrow
-      safeAreaInsetTop
-      fixed
-      placeholder
-      :z-index="2"
-      @clickLeft="clickNavLeft"
-    ></uvan-nav-bar>
     <view class="uvan-doc-demo-block__title">基础用法</view>
     <uvan-nav-bar title="标题" ></uvan-nav-bar>
     <view class="uvan-doc-demo-block__title">返回上级</view>

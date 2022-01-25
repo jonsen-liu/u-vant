@@ -51,7 +51,6 @@ table {
 
 /* #ifndef H5 */
 page, view {
-	width: 100%;
 	font-size: 28rpx;
 	line-height: 1;
 }

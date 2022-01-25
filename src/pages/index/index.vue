@@ -20,39 +20,48 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 const navList = ref([
-  {
-    title: "基础组件",
-    list: [
-      {
-        name: "Button 按钮",
-        path: "/pages/button/index"
-      },
-      {
-        name: "Cell 单元格",
-        path: "/pages/cell/index"
-      },
-      {
-        name: "Icon 图标",
-        path: "/pages/icon/index"
-      }
-    ]
-  },
-  {
-    title: "导航组件",
-    list: [
-      {
-        name: "NavBar 导航栏",
-        path: "/pages/nav-bar/index"
-      }
-    ]
-  }
+	{
+		title: '基础组件',
+		list: [
+			{
+				name: 'Button 按钮',
+				path: '/pages/button/index'
+			},
+			{
+				name: 'Cell 单元格',
+				path: '/pages/cell/index'
+			},
+			{
+				name: 'Icon 图标',
+				path: '/pages/icon/index'
+			}
+		]
+	},
+	{
+		title: '展示组件',
+		list: [
+			{
+				name: 'Badge 徽标',
+				path: '/pages/badge/index'
+			}
+		]
+	},
+	{
+		title: '导航组件',
+		list: [
+			{
+				name: 'NavBar 导航栏',
+				path: '/pages/nav-bar/index'
+			}
+		]
+	}
 ])
 
 const clickNav = (path: string) => {
-  console.log(path)
-  uni.navigateTo({
-    url: path
-  })
+	console.log(path)
+	uni.navigateTo({
+		url: path
+	})
 }
 </script>
 

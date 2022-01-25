@@ -2,44 +2,44 @@
 import { ref , onMounted, computed } from 'vue'
 
 const props = defineProps({
-  // 	标题
-  title: {
-    type: String,
-    default: ''
-  },
-  // 左侧文案
-  leftText: {
-    type: String,
-    default: ''
-  },
-  // 是否显示左侧箭头
-  leftArrow: {
-    type: Boolean,
-    default: false
-  },
-  // 右侧文案
-  rightText: {
-    type: String,
-    default: ''
-  },
-  fixed: {
-    type: Boolean,
-    default: false
-  },
-  // 固定在顶部时，是否在标签位置生成一个等高的占位元素
-  placeholder: {
-    type: Boolean,
-    default: false
-  },
-  // 导航栏 z-index
-  zIndex: {
-    type: Number
-  },
-  // 是否固定在顶部
-  safeAreaInsetTop: {
-    type: Boolean,
-    default: false
-  },
+	// 	标题
+	title: {
+		type: String,
+		default: ''
+	},
+	// 左侧文案
+	leftText: {
+		type: String,
+		default: ''
+	},
+	// 是否显示左侧箭头
+	leftArrow: {
+		type: Boolean,
+		default: false
+	},
+	// 右侧文案
+	rightText: {
+		type: String,
+		default: ''
+	},
+	fixed: {
+		type: Boolean,
+		default: false
+	},
+	// 固定在顶部时，是否在标签位置生成一个等高的占位元素
+	placeholder: {
+		type: Boolean,
+		default: false
+	},
+	// 导航栏 z-index
+	zIndex: {
+		type: Number
+	},
+	// 是否固定在顶部
+	safeAreaInsetTop: {
+		type: Boolean,
+		default: false
+	},
 })
 
 const emit = defineEmits(['click-left', 'click-right'])
@@ -47,39 +47,39 @@ const emit = defineEmits(['click-left', 'click-right'])
 const statusBarHeight = ref(0)
 
 const statusBarHeightPX = computed(() => {
-  return (statusBarHeight.value * 2) + 'rpx'
+	return (statusBarHeight.value * 2) + 'rpx'
 })
 
 let navBarStyle = computed(() => {
-  let style: Record<string, string | number> = {
-    paddingTop: statusBarHeightPX.value
-  }
-  if (props.fixed) {
-    style.position = 'fixed'
-    style.top = '0px'
-  }
-  if (props.zIndex) {
-    style.zIndex = props.zIndex
-  }
-  return style
+	let style: Record<string, string | number> = {
+		paddingTop: statusBarHeightPX.value
+	}
+	if (props.fixed) {
+		style.position = 'fixed'
+		style.top = '0px'
+	}
+	if (props.zIndex) {
+		style.zIndex = props.zIndex
+	}
+	return style
 })
 
 const clickLeft = () => {
-  emit('click-left')
+	emit('click-left')
 }
 
 const clickRight = () => {
-  emit('click-right')
+	emit('click-right')
 }
 
 onMounted(() => {
-  if (props.safeAreaInsetTop) {
-    uni.getSystemInfo({
-      success: (res) => {
-        statusBarHeight.value = res.statusBarHeight || 0
-      }
-    })
-  }
+	if (props.safeAreaInsetTop) {
+		uni.getSystemInfo({
+			success: (res) => {
+				statusBarHeight.value = res.statusBarHeight || 0
+			}
+		})
+	}
 })
 </script>
 
