@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, PropType } from 'vue'
+import { computed, onMounted, PropType } from 'vue'
 
 const props = defineProps({
 	// 按钮类型
@@ -49,15 +49,28 @@ const className = computed(() => {
 	if (props.loading) name += ' uvan-button--loading'
 	return name
 })
+const loadingColor = computed(() => {
+	// if () {
 
+	// }
+	return {
+		'--uvan-loading-spinner-color': 'red'
+	}
+})
+// onMounted(() => {
+// 	if (props.plain) {
+
+// 	}
+// })
 </script>
 
 <template>
   <button
 		:class="className">
     <view class="uvan-button__content">
-			<view v-if="props.loading">
-			</view>
+			<template v-if="props.loading">
+				<uvan-loading :type="props.loadingType" :size="40" :style="loadingColor"/>
+			</template>
 			<text v-else><slot/></text>
 		</view>
   </button>

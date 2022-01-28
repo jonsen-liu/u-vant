@@ -33,6 +33,13 @@ const uvanLoadingStyle = computed(() => {
 	if (props.color) {
 		style['--uvan-loading-spinner-color'] = props.color
 	}
+	if (props.size) {
+		if (typeof props.size === 'string') {
+			style['--uvan-loading-spinner-size'] =props.size
+		} else {
+			style['--uvan-loading-spinner-size'] =props.size + 'rpx'
+		}
+	}
 	return style
 })
 
@@ -85,7 +92,7 @@ const loadingTextColor = computed(() => {
     }"
     :style="uvanLoadingStyle"
   >
-    <view :class="['uvan-loading__spinner', 'uvan-loading--' + props.type]" :style="iconSize">
+    <view :class="['uvan-loading__spinner', 'uvan-loading--' + props.type]">
       <template v-if="props.type === 'spinner'">
         <text class="uvan-loading__line uvan-loading__line--1"></text>
         <text class="uvan-loading__line uvan-loading__line--2"></text>
@@ -101,7 +108,7 @@ const loadingTextColor = computed(() => {
         <text class="uvan-loading__line uvan-loading__line--12"></text>
       </template>
     </view>
-    <text class="uvan-loading__text" :style="loadingTextColor"><slot/></text>
+    <text v-if="$slots.default" class="uvan-loading__text" :style="loadingTextColor"><slot/></text>
   </view>
 </template>
 
@@ -127,9 +134,9 @@ const loadingTextColor = computed(() => {
   }
   .uvan-loading__spinner {
     display: inline-block;
-    color: var(--uvan-loading-spinner-color);
     width: var(--uvan-loading-spinner-size);
     height: var(--uvan-loading-spinner-size);
+    color: var(--uvan-loading-spinner-color);
     border-radius: 50%;
     animation-name: circularCartoon;
     animation-duration: var(--uvan-loading-spinner-animation-duration);
