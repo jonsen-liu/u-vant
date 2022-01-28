@@ -38,6 +38,15 @@ const navList = ref([
 		]
 	},
 	{
+		title: '反馈组件',
+		list: [
+			{
+				name: 'Loading 加载',
+				path: '/pages/loading/index'
+			}
+		]
+	},
+	{
 		title: '展示组件',
 		list: [
 			{
