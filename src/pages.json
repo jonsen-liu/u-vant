@@ -41,6 +41,12 @@
 			"style": {
 				"navigationBarTitleText": "Loading 加载"
 			}
+		},
+		{
+			"path": "pages/cell/index",
+			"style": {
+				"navigationBarTitleText": "Cell 单元格"
+			}
 		}
 	],
 	"globalStyle": {
