@@ -1,6 +1,9 @@
 {
   "name": "u-vant",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "author": "jonsen-liu",
+  "description": "轻量、可靠的小程序 UI 组件库",
+  "homepage": "https://github.com/jonsen-liu/u-vant#readme",
   "scripts": {
     "dev:app": "uni -p app",
     "dev:h5": "uni",
