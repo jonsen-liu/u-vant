@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-import { computed, onMounted, PropType } from 'vue'
+import { computed, PropType } from 'vue'
+
+const emit = defineEmits(['click'])
 
 const props = defineProps({
 	// 按钮类型
@@ -36,6 +38,36 @@ const props = defineProps({
 	loadingType: {
 		type: String as PropType<'circular' | 'spinner'>,
 		default: 'circular'
+	},
+	// 加载状态提示文字
+	loadingText: {
+		type: String,
+		default: ''
+	},
+	// 是否为方形按钮
+	square: {
+		type: Boolean,
+		default: false
+	},
+	// 是否为圆形按钮
+	round: {
+		type: Boolean,
+		default: false
+	},
+	// icon 图
+	icon: {
+		type: String,
+		default: ''
+	},
+	// 是否为块级元素
+	block: {
+		type: Boolean,
+		default: false
+	},
+	// 自定义颜色
+	color: {
+		type: String,
+		default: ''
 	}
 })
 
@@ -47,31 +79,57 @@ const className = computed(() => {
 	if (props.hairline) name += ' uvan-button--hairline'
 	if (props.disabled) name += ' uvan-button--disabled'
 	if (props.loading) name += ' uvan-button--loading'
+	if (props.round) name += ' uvan-button--round'
+	if (props.square) name += ' uvan-button--square'
+	if (props.block) name += ' uvan-button--block'
 	return name
 })
-const loadingColor = computed(() => {
-	// if () {
 
-	// }
-	return {
-		'--uvan-loading-spinner-color': 'red'
+const styleColor = computed(() => {
+	let style: Record<string, any> = {}
+	if (props.color && !props.plain) {
+		style.color = 'white'
+		style.background = props.color
+		style.borderColor = props.color
+	} else if (props.color && props.plain) {
+		style.color = props.color
+		style.borderColor = props.color
 	}
+	return style
 })
-// onMounted(() => {
-// 	if (props.plain) {
 
-// 	}
-// })
+const clickButton = () => {
+	if (!props.disabled && !props.loading) {
+		emit('click')
+	}
+}
+
 </script>
 
 <template>
   <button
-		:class="className">
+		:class="className"
+		:style="styleColor"
+		@click.stop="clickButton"
+	>
     <view class="uvan-button__content">
 			<template v-if="props.loading">
-				<uvan-loading :type="props.loadingType" :size="40" :style="loadingColor"/>
+				<uvan-loading :type="props.loadingType" :size="40"/>
 			</template>
-			<text v-else><slot/></text>
+			<template v-else>
+				<view class="uvan-button__icon" v-if="props.icon">
+					<uvan-icon :name="props.icon"/>
+				</view>
+				<view class="uvan-button__text">
+					<slot/>
+				</view>
+			</template>
+			<view
+				v-if="props.loading && props.loadingText"
+				class="uvan-button__laoding-text uvan-button__text"
+			>
+				{{props.loadingText}}
+			</view>
 		</view>
   </button>
 </template>
@@ -175,15 +233,71 @@ const loadingColor = computed(() => {
 		}
 	}
 
+	&.uvan-button--loading {
+		&:active::after {
+			content: none;
+		}
+	}
+
+	&.uvan-button--large {
+		width: 100%;
+    height: var(--uvan-button-large-height);
+		.uvan-button__text {
+			font-size: var(--uvan-button-default-font-size);
+		}
+	}
+
 	&.uvan-button--normal {
 		padding: var(--uvan-button-normal-padding);
-    font-size: var(--uvan-button-normal-font-size);
+		.uvan-button__text {
+			font-size: var(--uvan-button-normal-font-size);
+		}
 	}
+
+	&.uvan-button--small {
+		height: var(--uvan-button-small-height);
+		padding: var(--uvan-button-small-padding);
+		.uvan-button__text {
+			font-size: var(--uvan-button-small-font-size);
+		}
+	}
+
+	&.uvan-button--mini {
+		height: var(--uvan-button-mini-height);
+		padding: var(--uvan-button-mini-padding);
+		.uvan-button__text {
+			font-size: var(--uvan-button-mini-font-size);
+		}
+	}
+
+	&.uvan-button--round {
+		border-radius: var(--uvan-border-radius-max);
+	}
+	
+	&.uvan-button--square {
+		border-radius: 0px;
+	}
+
+	&.uvan-button--block {
+		display: block;
+		width: 100%;
+	}
+
 	.uvan-button__content {
 		display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
+		.uvan-button__laoding-text {
+			margin-left: var(--uvan-padding-base);
+		}
+	}
+	.uvan-button__icon,.uvan-button__text {
+		display: inline-flex;
+		align-items: center;
+	}
+	.uvan-button__icon+.uvan-button__text {
+		margin-left: var(--uvan-padding-base);
 	}
 }
 </style>

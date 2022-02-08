@@ -60,12 +60,29 @@ const iconStyle = computed(()=> {
 	}
 	return style
 })
+
+const imgStyle = computed(() => {
+	let style: Record<string, string> = { }
+	if (props.size !== 'inherit') {
+		if (typeof props.size === 'number') {
+			style.width = props.size + 'rpx'
+			style.height = props.size + 'rpx'
+		} else {
+			style.width = props.size
+			style.height = props.size
+		}
+	} else {
+		style.width = '32rpx'
+		style.height = '32rpx'
+	}
+	return style
+})
 </script>
 
 <template>
   <view :class="className" :style="iconStyle">
 		<template v-if="urlName">
-			<image class="uvan-icon__image" :src="props.name" mode="aspectFit" />
+			<image :style="imgStyle" class="uvan-icon__image" :src="props.name" mode="aspectFit" />
 		</template>
 		<template v-if="props.dot">
 
@@ -77,10 +94,11 @@ const iconStyle = computed(()=> {
 @import url('../iconfont/iconfont.css');
 .uvan-icon__wrapper {
 	position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
 	.uvan-icon__image {
-		width: 1em;
-		height: 1em;
+		width: 32rpx;
+		height: 32rpx;
 	}
 }
 </style>

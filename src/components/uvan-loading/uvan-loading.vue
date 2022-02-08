@@ -43,20 +43,20 @@ const uvanLoadingStyle = computed(() => {
 	return style
 })
 
-const iconSize = computed(() => {
-	if (!props.size) return {}
-	if (typeof props.size === 'string') {
-		return {
-			width: props.size,
-			height: props.size
-		}
-	}
+// const iconSize = computed(() => {
+// 	if (!props.size) return {}
+// 	if (typeof props.size === 'string') {
+// 		return {
+// 			width: props.size,
+// 			height: props.size
+// 		}
+// 	}
   
-	return {
-		width: props.size + 'rpx',
-		height: props.size + 'rpx'
-	}
-})
+// 	return {
+// 		width: props.size + 'rpx',
+// 		height: props.size + 'rpx'
+// 	}
+// })
 
 const borderSize = computed(() => {
 	if (typeof props.size === 'string') {

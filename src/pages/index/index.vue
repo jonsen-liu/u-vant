@@ -80,6 +80,7 @@ const clickNav = (path: string) => {
     min-height: 100%;
     padding: 92rpx 40rpx 40rpx 40rpx;
     box-sizing: border-box;
+    background-color: #fff;
     .demo-home__title {
       font-size: 48rpx;
       color: #323233;
