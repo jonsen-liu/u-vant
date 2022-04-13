@@ -29,7 +29,17 @@ const handleClick = () => {
     </uvan-cell-group>
     <view class="uvan-doc-demo-block__title">展示图标</view>
     <uvan-cell-group>
-      <uvan-cell title="单元格" icon="location-o" />
+      <uvan-cell title="单元格" icon="location-o" value="内容"/>
+    </uvan-cell-group>
+    <view class="uvan-doc-demo-block__title">只设置 value</view>
+    <uvan-cell-group>
+      <uvan-cell value="内容"/>
+    </uvan-cell-group>
+    <view class="uvan-doc-demo-block__title">展示箭头</view>
+    <uvan-cell-group>
+      <uvan-cell title="单元格" icon="location-o" isLink/>
+      <uvan-cell title="单元格" icon="location-o" value="内容" isLink/>
+      <uvan-cell title="单元格" is-link arrow-direction="down" value="内容"/>
     </uvan-cell-group>
   </view>
 </template>

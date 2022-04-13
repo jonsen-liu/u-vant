@@ -26,21 +26,48 @@ const props = defineProps({
 	icon: {
 		type: String,
 		default: ''
+	},
+	// 展示箭头
+	isLink: {
+		type: Boolean,
+		default: false
+	},
+	arrowDirection: {
+		type: String,
+		default: 'right'
 	}
 })
 
+// const arrowValue = computed(() => {
+// 	let direction = {
+// 		left: 'arrow-left',
+// 		right: 'arrow',
+// 		up: 'arrow-up',
+// 		down: 'arrow-down'
+// 	}
+// 	return direction[props.arrowDirection] || ''
+// })
+
 const className = computed(() => {
 	let str = 'uvan-cell'
-
+	// van-cell--clickable
 	if (props.size) str += ` uvan-cell-group--${props.size}`
+	if (props.isLink) str += ' uvan-cell--clickable'
 	return str
 })
+
+const uvantCellName = computed(() => {
+	let str = 'uvan-cell__value'
+	if (!props.title && !props.label && props.value) str += ' uvan-cell__value--alone'
+	return str
+})
+
 </script>
 <template>
   <view :class="className">
     <view class="uvan-cell__title" v-if="props.title || props.label">
       
-      <view v-if="props.title">
+      <view v-if="props.title" class="uvan-cell__title-">
         <template v-if="props.icon">
           <uvan-icon :name="props.icon" />
         </template>
@@ -48,8 +75,11 @@ const className = computed(() => {
       </view>
       <text class="uvan-cell__label" v-if="props.label">{{props.label}}</text>
     </view>
-    <view class="uvan-cell__value">
+    <view :class="uvantCellName">
       {{props.value}}
+    </view>
+    <view v-if="isLink" class="uvan-cell__right-icon">
+      <uvan-icon :name="props.arrowDirection" />
     </view>
   </view>
 </template>
@@ -60,6 +90,7 @@ const className = computed(() => {
     display: flex;
     box-sizing: border-box;
     width: 100%;
+    min-height: var(--uvan-cell-height);
     padding: var(--uvan-cell-vertical-padding) var(--uvan-cell-horizontal-padding);
     overflow: hidden;
     color: var(--uvan-cell-text-color);
@@ -87,10 +118,14 @@ const className = computed(() => {
         }
       }
     }
+    &.uvan-cell--clickable:active {
+      background-color: var(--uvan-cell-active-color);
+    }
     .uvan-cell__title {
       flex: 1;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       .uvan-cell__label {
         margin-top: var(--uvan-cell-label-margin-top);
         color: var(--uvan-cell-label-color);
@@ -99,13 +134,24 @@ const className = computed(() => {
       }
     }
     .uvan-cell__value {
-      flex: 1;
       position: relative;
+      flex: 1;
+      display: flex;
       overflow: hidden;
+      justify-content: flex-end;
+      align-items: center;
       color: var(--uvan-cell-value-color);
-      text-align: right;
-      vertical-align: middle;
       word-wrap: break-word;
+      
+      &.uvan-cell__value--alone {
+        color: var(--uvan-text-color);
+        justify-content: flex-start;
+      }
+    }
+    .uvan-cell__right-icon {
+      display: flex;
+      align-items: center;
+      color: var(--uvan-cell-value-color);
     }
   }
 </style>
