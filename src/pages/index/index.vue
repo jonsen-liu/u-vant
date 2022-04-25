@@ -52,6 +52,10 @@ const navList = ref([
 			{
 				name: 'Badge 徽标',
 				path: '/pages/badge/index'
+			},
+			{
+				name: 'Tag 标签',
+				path: '/pages/tag/index'
 			}
 		]
 	},
@@ -78,7 +82,7 @@ const clickNav = (path: string) => {
   .demo-home {
     width: 100%;
     min-height: 100%;
-    padding: 92rpx 40rpx 40rpx 40rpx;
+    padding: 120rpx 40rpx 40rpx 40rpx;
     box-sizing: border-box;
     background-color: #fff;
     .demo-home__title {

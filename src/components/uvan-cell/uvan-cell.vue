@@ -1,56 +1,38 @@
 <script setup lang="ts">
-import { computed, PropType } from 'vue'
+import { computed, useSlots } from 'vue'
 
-const props = defineProps({
-	// 左侧标题
-	title: {
-		type: String,
-		defalut: ''
-	},
-	// 标题下方的描述信息
-	label: {
-		type: String,
-		defalut: ''
-	},
-	// 右侧内容
-	value: {
-		type: String,
-		defalut: ''
-	},
-	// 单元格大小，可选值为 large
-	size: {
-		type: String as PropType<'' | 'large'>,
-		default: ''
-	},
-	// 左侧图标名称或图片链接，等同于 Icon 组件的 name 属性
-	icon: {
-		type: String,
-		default: ''
-	},
-	// 展示箭头
-	isLink: {
-		type: Boolean,
-		default: false
-	},
-	arrowDirection: {
-		type: String,
-		default: 'right'
-	}
+const props = withDefaults(defineProps<{
+  title?: string // 左侧标题
+  label?: string // 标题下方的描述信息
+  value?: string // 右侧内容
+  size?: '' | 'large' // 单元格大小，可选值为 large
+  icon?: string // 左侧图标名称或图片链接，等同于 Icon 组件的 name 属性
+  isLink?: boolean // 是否展示右侧箭头并开启点击反馈
+  arrowDirection?: 'right' | 'left' | 'up' | 'down' // 箭头方向，可选值为 left up down
+}>(), {
+	title: '',
+	label: '',
+	value: '',
+	size: '',
+	icon: '',
+	isLink: false,
+	arrowDirection: 'right'
 })
 
-// const arrowValue = computed(() => {
-// 	let direction = {
-// 		left: 'arrow-left',
-// 		right: 'arrow',
-// 		up: 'arrow-up',
-// 		down: 'arrow-down'
-// 	}
-// 	return direction[props.arrowDirection] || ''
-// })
+const slots = useSlots()
+
+const arrowValue = computed(() => {
+	let direction = {
+		left: 'arrow-left',
+		right: 'arrow',
+		up: 'arrow-up',
+		down: 'arrow-down'
+	}
+	return direction[props.arrowDirection] || ''
+})
 
 const className = computed(() => {
 	let str = 'uvan-cell'
-	// van-cell--clickable
 	if (props.size) str += ` uvan-cell-group--${props.size}`
 	if (props.isLink) str += ' uvan-cell--clickable'
 	return str
@@ -58,30 +40,51 @@ const className = computed(() => {
 
 const uvantCellName = computed(() => {
 	let str = 'uvan-cell__value'
-	if (!props.title && !props.label && props.value) str += ' uvan-cell__value--alone'
+	if (
+		!props.title &&
+    !props.label &&
+    !slots['title'] && 
+    props.value
+	) {
+		str += ' uvan-cell__value--alone'
+	}
 	return str
 })
 
 </script>
 <template>
-  <view :class="className">
-    <view class="uvan-cell__title" v-if="props.title || props.label">
-      
-      <view v-if="props.title" class="uvan-cell__title-">
-        <template v-if="props.icon">
-          <uvan-icon :name="props.icon" />
-        </template>
-        {{props.title}}
-      </view>
-      <text class="uvan-cell__label" v-if="props.label">{{props.label}}</text>
-    </view>
-    <view :class="uvantCellName">
-      {{props.value}}
-    </view>
-    <view v-if="isLink" class="uvan-cell__right-icon">
-      <uvan-icon :name="props.arrowDirection" />
-    </view>
-  </view>
+  <div :class="className">
+    <div
+      class="uvan-cell__title"
+      v-if="props.title || props.label || $slots['title']"
+    >
+      <template v-if="$slots['title']">
+        <div class="uvan-cell__title-">
+          <slot name="title"></slot>
+        </div>
+      </template>
+      <template v-if="props.title || props.label">
+        <div class="uvan-cell__title-">
+          <template v-if="props.icon">
+            <uvan-icon :name="props.icon" />
+          </template>
+          {{props.title}}
+        </div>
+      </template>
+      <span class="uvan-cell__label" v-if="props.label">{{props.label}}</span>
+    </div>
+    <div :class="uvantCellName">
+      <template v-if="$slots['right-icon']">
+        <slot name="right-icon"></slot>
+      </template>
+      <template v-else>
+        {{props.value}}
+      </template>
+    </div>
+    <div v-if="isLink" class="uvan-cell__right-icon">
+      <uvan-icon :name="arrowValue" />
+    </div>
+  </div>
 </template>
 <style lang="less" scoped>
   @import url('../uvan-cell-group/variable.less');

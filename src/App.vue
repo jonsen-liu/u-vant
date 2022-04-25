@@ -26,6 +26,8 @@ page {
 
 .demo-page {
 	background-color: #f7f8fa;
+  padding-bottom:calc(50rpx + constant(safe-area-inset-bottom));
+  padding-bottom:calc(50rpx + env(safe-area-inset-bottom))
 }
 .uvan-doc-demo-block__title {
 	margin: 0;

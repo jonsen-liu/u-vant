@@ -47,6 +47,12 @@
 			"style": {
 				"navigationBarTitleText": "Cell 单元格"
 			}
+		},
+		{
+			"path": "pages/tag/index",
+			"style": {
+				"navigationBarTitleText": "Tag 标签"
+			}
 		}
 	],
 	"globalStyle": {
