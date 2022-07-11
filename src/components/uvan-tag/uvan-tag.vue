@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed } from '@vue/reactivity'
+import { computed } from 'vue'
 
 const props = withDefaults(
 	defineProps<{
@@ -35,9 +35,7 @@ const props = withDefaults(
 	}
 )
 
-const emit = defineEmits<{
-  (e: 'close'): void
-}>()
+const emit = defineEmits<{(e: 'close'): void}>()
 
 const className = computed(() => {
 	let str = `uvan-tag uvan-tag--${props.type} `
@@ -71,19 +69,19 @@ const clickCross = () => {
 </script>
 
 <template>
-  <div
-    :class="[className, !props.show && 'uvan-tag--close']"
-    :style="CSSstyle"
-  >
-    <slot></slot>
-    <span
-      v-if="props.closeable"
-      class="uvan-tag__close"
-      @click="clickCross"
-    >
-      <uvan-icon name="cross" size="24rpx" />
-    </span>
-  </div>
+	<div
+		:class="[className, !props.show && 'uvan-tag--close']"
+		:style="CSSstyle"
+	>
+		<slot></slot>
+		<span
+			v-if="props.closeable"
+			class="uvan-tag__close"
+			@click="clickCross"
+		>
+			<uvan-icon name="cross" size="24rpx" />
+		</span>
+	</div>
 </template>
 
 <style lang="less" scoped>

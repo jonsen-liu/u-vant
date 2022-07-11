@@ -11,79 +11,79 @@ const solid = ref(['location', 'like', 'star', 'phone', 'setting', 'fire', 'coup
 </script>
 
 <template>
-  <view class="demo-icon demo-page">
-    <!-- <uvan-nav-bar leftArrow title="Icon"/> -->
-    <view>1</view>
-    <!-- 用法示例 -->
-    <view class="demo-icon-main">
-      <view class="uvan-doc-demo-block__title">基础用法</view>
-      <view class="demo-icom-mian-group">
-        <view class="demo-icom-uvan-icon">
-          <uvan-icon name="chat-o" :size="64" />
-        </view>
-        <view class="demo-icom-uvan-icon">
-          <uvan-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" :size="64" />
-        </view>
-      </view>
-      <view class="uvan-doc-demo-block__title">徽标提示</view>
-      <view class="demo-icom-mian-group">
-        <view class="demo-icom-uvan-icon">
-          <uvan-icon name="chat-o" :size="64" dot/>
-        </view>
-        <view class="demo-icom-uvan-icon">
-          <uvan-icon name="chat-o" :size="64" badge="9" />
-        </view>
-        <view class="demo-icom-uvan-icon">
-          <uvan-icon name="chat-o" :size="64" badge="99+" />
-        </view>
-      </view>
-      <view class="uvan-doc-demo-block__title">图标颜色</view>
-      <view class="demo-icom-mian-group">
-        <view class="demo-icom-uvan-icon">
-          <uvan-icon name="chat-o" :size="64" color="#1989fa"/>
-        </view>
-        <view class="demo-icom-uvan-icon">
-          <uvan-icon name="fire-o" :size="64" color="#ee0a24" />
-        </view>
-      </view>
-      <view class="uvan-doc-demo-block__title">图标大小</view>
-      <view class="demo-icom-mian-group">
-        <view class="demo-icom-uvan-icon">
-          <uvan-icon name="chat-o" :size="64" />
-        </view>
-        <view class="demo-icom-uvan-icon">
-          <uvan-icon name="chat-o" :size="96" />
-        </view>
-      </view>
-    </view>
-    <!-- 基础图标 -->
-    <view class="demo-icon-main">
-      <view class="demo-icom-mian-group">
-        <view class="demo-icom-uvan-icon" v-for="item in basics" :key="item">
-          <uvan-icon :name="item" :size="64"/>
-          <view class="demo-icon__name">{{item}}</view>
-        </view>
-      </view>
-    </view>
-    <!-- 线框风格 -->
-    <view class="demo-icon-main">
-      <view class="demo-icom-mian-group">
-        <view class="demo-icom-uvan-icon" v-for="item in wireframe" :key="item">
-          <uvan-icon :name="item" :size="64"/>
-          <view class="demo-icon__name">{{item}}</view>
-        </view>
-      </view>
-    </view>
-    <!-- 实底风格 -->
-    <view class="demo-icon-main">
-      <view class="demo-icom-mian-group">
-        <view class="demo-icom-uvan-icon" v-for="item in solid" :key="item">
-          <uvan-icon :name="item" :size="64"/>
-          <view class="demo-icon__name">{{item}}</view>
-        </view>
-      </view>
-    </view>
-  </view>
+	<view class="demo-icon demo-page">
+		<!-- <uvan-nav-bar leftArrow title="Icon"/> -->
+		<view>1</view>
+		<!-- 用法示例 -->
+		<view class="demo-icon-main">
+			<view class="uvan-doc-demo-block__title">基础用法</view>
+			<view class="demo-icom-mian-group">
+				<view class="demo-icom-uvan-icon">
+					<uvan-icon name="chat-o" :size="64" />
+				</view>
+				<view class="demo-icom-uvan-icon">
+					<uvan-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" :size="64" />
+				</view>
+			</view>
+			<view class="uvan-doc-demo-block__title">徽标提示</view>
+			<view class="demo-icom-mian-group">
+				<view class="demo-icom-uvan-icon">
+					<uvan-icon name="chat-o" :size="64" dot/>
+				</view>
+				<view class="demo-icom-uvan-icon">
+					<uvan-icon name="chat-o" :size="64" badge="9" />
+				</view>
+				<view class="demo-icom-uvan-icon">
+					<uvan-icon name="chat-o" :size="64" badge="99+" />
+				</view>
+			</view>
+			<view class="uvan-doc-demo-block__title">图标颜色</view>
+			<view class="demo-icom-mian-group">
+				<view class="demo-icom-uvan-icon">
+					<uvan-icon name="chat-o" :size="64" color="#1989fa"/>
+				</view>
+				<view class="demo-icom-uvan-icon">
+					<uvan-icon name="fire-o" :size="64" color="#ee0a24" />
+				</view>
+			</view>
+			<view class="uvan-doc-demo-block__title">图标大小</view>
+			<view class="demo-icom-mian-group">
+				<view class="demo-icom-uvan-icon">
+					<uvan-icon name="chat-o" :size="64" />
+				</view>
+				<view class="demo-icom-uvan-icon">
+					<uvan-icon name="chat-o" :size="96" />
+				</view>
+			</view>
+		</view>
+		<!-- 基础图标 -->
+		<view class="demo-icon-main">
+			<view class="demo-icom-mian-group">
+				<view class="demo-icom-uvan-icon" v-for="item in basics" :key="item">
+					<uvan-icon :name="item" :size="64"/>
+					<view class="demo-icon__name">{{item}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- 线框风格 -->
+		<view class="demo-icon-main">
+			<view class="demo-icom-mian-group">
+				<view class="demo-icom-uvan-icon" v-for="item in wireframe" :key="item">
+					<uvan-icon :name="item" :size="64"/>
+					<view class="demo-icon__name">{{item}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- 实底风格 -->
+		<view class="demo-icon-main">
+			<view class="demo-icom-mian-group">
+				<view class="demo-icom-uvan-icon" v-for="item in solid" :key="item">
+					<uvan-icon :name="item" :size="64"/>
+					<view class="demo-icon__name">{{item}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
 </template>
 
 <style lang="less" scoped>

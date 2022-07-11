@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { computed, PropType } from 'vue'
 
-
 const props = defineProps({
 	color: {
 		type: String,
@@ -29,15 +28,15 @@ const props = defineProps({
 })
 
 const uvanLoadingStyle = computed(() => {
-	let style: Record<string, any> = { }
+	const style: Record<string, any> = { }
 	if (props.color) {
 		style['--uvan-loading-spinner-color'] = props.color
 	}
 	if (props.size) {
 		if (typeof props.size === 'string') {
-			style['--uvan-loading-spinner-size'] =props.size
+			style['--uvan-loading-spinner-size'] = props.size
 		} else {
-			style['--uvan-loading-spinner-size'] =props.size + 'rpx'
+			style['--uvan-loading-spinner-size'] = props.size + 'rpx'
 		}
 	}
 	return style
@@ -51,7 +50,7 @@ const borderSize = computed(() => {
 		}
 		return parseInt(props.size) / 10 + 'px'
 	}
-	let size = props.size / 2 / 10 + 'px'
+	const size = props.size / 2 / 10 + 'px'
 	return size
 })
 
@@ -70,31 +69,33 @@ const loadingTextColor = computed(() => {
 
 </script>
 <template>
-  <view
-    :class="{
-      'uvan-loading': true,
-      'uvan-loading--vertical': props.vertical
-    }"
-    :style="uvanLoadingStyle"
-  >
-    <view :class="['uvan-loading__spinner', 'uvan-loading--' + props.type]">
-      <template v-if="props.type === 'spinner'">
-        <text class="uvan-loading__line uvan-loading__line--1"></text>
-        <text class="uvan-loading__line uvan-loading__line--2"></text>
-        <text class="uvan-loading__line uvan-loading__line--3"></text>
-        <text class="uvan-loading__line uvan-loading__line--4"></text>
-        <text class="uvan-loading__line uvan-loading__line--5"></text>
-        <text class="uvan-loading__line uvan-loading__line--6"></text>
-        <text class="uvan-loading__line uvan-loading__line--7"></text>
-        <text class="uvan-loading__line uvan-loading__line--8"></text>
-        <text class="uvan-loading__line uvan-loading__line--9"></text>
-        <text class="uvan-loading__line uvan-loading__line--10"></text>
-        <text class="uvan-loading__line uvan-loading__line--11"></text>
-        <text class="uvan-loading__line uvan-loading__line--12"></text>
-      </template>
-    </view>
-    <text v-if="$slots.default" class="uvan-loading__text" :style="loadingTextColor"><slot/></text>
-  </view>
+	<view
+		:class="{
+			'uvan-loading': true,
+			'uvan-loading--vertical': props.vertical
+		}"
+		:style="uvanLoadingStyle"
+	>
+		<view :class="['uvan-loading__spinner', 'uvan-loading--' + props.type]">
+			<template v-if="props.type === 'spinner'">
+				<text class="uvan-loading__line uvan-loading__line--1"></text>
+				<text class="uvan-loading__line uvan-loading__line--2"></text>
+				<text class="uvan-loading__line uvan-loading__line--3"></text>
+				<text class="uvan-loading__line uvan-loading__line--4"></text>
+				<text class="uvan-loading__line uvan-loading__line--5"></text>
+				<text class="uvan-loading__line uvan-loading__line--6"></text>
+				<text class="uvan-loading__line uvan-loading__line--7"></text>
+				<text class="uvan-loading__line uvan-loading__line--8"></text>
+				<text class="uvan-loading__line uvan-loading__line--9"></text>
+				<text class="uvan-loading__line uvan-loading__line--10"></text>
+				<text class="uvan-loading__line uvan-loading__line--11"></text>
+				<text class="uvan-loading__line uvan-loading__line--12"></text>
+			</template>
+		</view>
+		<text v-if="$slots.default" class="uvan-loading__text" :style="loadingTextColor">
+			<slot></slot>
+		</text>
+	</view>
 </template>
 
 <style lang="less" scoped>

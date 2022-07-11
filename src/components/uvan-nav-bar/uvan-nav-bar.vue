@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref , onMounted, computed } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
 const props = defineProps({
 	// 	标题
@@ -39,7 +39,7 @@ const props = defineProps({
 	safeAreaInsetTop: {
 		type: Boolean,
 		default: false
-	},
+	}
 })
 
 const emit = defineEmits(['click-left', 'click-right'])
@@ -50,8 +50,8 @@ const statusBarHeightPX = computed(() => {
 	return (statusBarHeight.value * 2) + 'rpx'
 })
 
-let navBarStyle = computed(() => {
-	let style: Record<string, string | number> = {
+const navBarStyle = computed(() => {
+	const style: Record<string, string | number> = {
 		paddingTop: statusBarHeightPX.value
 	}
 	if (props.fixed) {
@@ -84,36 +84,36 @@ onMounted(() => {
 </script>
 
 <template>
-  <view class="uvan-nav-bar">
-    <view
-      class="uvan-nav-bar__content uvan-hairline--bottom"
-      :style="navBarStyle"
-    >
-      <view class="uvan-nav-bar__left" @click="clickLeft">
-        <slot name="left">
-          <uvan-icon v-if="leftArrow" name="arrow-left" />
-          <text class="uvan-nav-bar__text">{{props.leftText}}</text>
-        </slot>
-      </view>
-      <view class="uvan-nav-bar__title uvan-ellipsis">
-        <slot name="title">
-          {{title}}
-        </slot>
-      </view>
+	<view class="uvan-nav-bar">
+		<view
+			class="uvan-nav-bar__content uvan-hairline--bottom"
+			:style="navBarStyle"
+		>
+			<view class="uvan-nav-bar__left" @click="clickLeft">
+				<slot name="left">
+					<uvan-icon v-if="leftArrow" name="arrow-left" />
+					<text class="uvan-nav-bar__text">{{props.leftText}}</text>
+				</slot>
+			</view>
+			<view class="uvan-nav-bar__title uvan-ellipsis">
+				<slot name="title">
+					{{title}}
+				</slot>
+			</view>
 
-      <view class="uvan-nav-bar__right" @click="clickRight">
-        <slot name="right">
-          <text class="uvan-nav-bar__text">{{props.rightText}}</text>
-        </slot>
-      </view>
-    </view>
-    <view v-if="props.placeholder" class="uvan-nav-bar__placeholder"></view>
-  </view>
+			<view class="uvan-nav-bar__right" @click="clickRight">
+				<slot name="right">
+					<text class="uvan-nav-bar__text">{{props.rightText}}</text>
+				</slot>
+			</view>
+		</view>
+		<view v-if="props.placeholder" class="uvan-nav-bar__placeholder"></view>
+	</view>
 </template>
 
 <style lang="less">
 .uvan-nav-bar {
-  
+
   --uvan-nav-bar-height: 92rpx;
   --uvan-nav-bar-background-color:var(--uvan-background-color-light);
   --uvan-nav-bar-arrow-size: 32rpx;
@@ -136,7 +136,7 @@ onMounted(() => {
     user-select: none;
     display: flex;
     align-items: center;
-    
+
     &.uvan-hairline--bottom::after {
       position: absolute;
       content: " ";

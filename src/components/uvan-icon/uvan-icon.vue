@@ -48,8 +48,8 @@ const className = computed(() => {
 	return `uvan-icon__wrapper ${props.classPrefix} ${props.name}`
 })
 
-const iconStyle = computed(()=> {
-	let style: Record<string, string> = {}
+const iconStyle = computed(() => {
+	const style: Record<string, string> = {}
 	if (props.color !== 'inherit') style.color = props.color
 	if (props.size !== 'inherit') {
 		if (typeof props.size === 'number') {
@@ -62,7 +62,7 @@ const iconStyle = computed(()=> {
 })
 
 const imgStyle = computed(() => {
-	let style: Record<string, string> = { }
+	const style: Record<string, string> = { }
 	if (props.size !== 'inherit') {
 		if (typeof props.size === 'number') {
 			style.width = props.size + 'rpx'
@@ -80,7 +80,7 @@ const imgStyle = computed(() => {
 </script>
 
 <template>
-  <view :class="className" :style="iconStyle">
+	<view :class="className" :style="iconStyle">
 		<template v-if="urlName">
 			<image :style="imgStyle" class="uvan-icon__image" :src="props.name" mode="aspectFit" />
 		</template>

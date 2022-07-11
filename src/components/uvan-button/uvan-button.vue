@@ -86,7 +86,7 @@ const className = computed(() => {
 })
 
 const styleColor = computed(() => {
-	let style: Record<string, any> = {}
+	const style: Record<string, any> = {}
 	if (props.color && !props.plain) {
 		style.color = 'white'
 		style.background = props.color
@@ -107,12 +107,12 @@ const clickButton = () => {
 </script>
 
 <template>
-  <button
+	<button
 		:class="className"
 		:style="styleColor"
 		@click.stop="clickButton"
 	>
-    <view class="uvan-button__content">
+		<view class="uvan-button__content">
 			<template v-if="props.loading">
 				<uvan-loading :type="props.loadingType" :size="40"/>
 			</template>
@@ -131,7 +131,7 @@ const clickButton = () => {
 				{{props.loadingText}}
 			</view>
 		</view>
-  </button>
+	</button>
 </template>
 
 <style lang="less" scoped>
@@ -273,7 +273,7 @@ const clickButton = () => {
 	&.uvan-button--round {
 		border-radius: var(--uvan-border-radius-max);
 	}
-	
+
 	&.uvan-button--square {
 		border-radius: 0px;
 	}

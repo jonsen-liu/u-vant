@@ -1,22 +1,3 @@
-<template>
-  <view class="demo-home">
-    <view class="demo-home__title">U-Vant</view>
-    <view class="demo-home__desc">轻量、可靠的小程序 UI 组件库</view>
-    <view class="demo-home-nav" v-for="(items, index) in navList" :key="index">
-      <view class="demo-home-nav__title">{{items.title}}</view>
-      <view class="demo-home-nav__group">
-        <view
-          class="demo-home-nav__block"
-          v-for="(item, j) in items.list"
-          :key="j"
-          @click="clickNav(item.path)"
-        >{{item.name}}</view>
-        <!-- <view class="demo-home-nav__block">Cell 单元格</view> -->
-      </view>
-    </view>
-  </view>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue'
 const navList = ref([
@@ -78,7 +59,26 @@ const clickNav = (path: string) => {
 }
 </script>
 
-<style lang="less">
+<template>
+	<view class="demo-home">
+		<view class="demo-home__title">U-Vant</view>
+		<view class="demo-home__desc">轻量、可靠的小程序 UI 组件库</view>
+		<view class="demo-home-nav" v-for="(items, index) in navList" :key="index">
+			<view class="demo-home-nav__title">{{items.title}}</view>
+			<view class="demo-home-nav__group">
+				<view
+					class="demo-home-nav__block"
+					v-for="(item, j) in items.list"
+					:key="j"
+					@click="clickNav(item.path)"
+				>{{item.name}}</view>
+				<!-- <view class="demo-home-nav__block">Cell 单元格</view> -->
+			</view>
+		</view>
+	</view>
+</template>
+
+<style lang="less" scoped>
   .demo-home {
     width: 100%;
     min-height: 100%;

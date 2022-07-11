@@ -6,7 +6,7 @@ const props = defineProps({
 		type: String,
 		default: ''
 	},
-	// 是否展示为圆角卡片风格 
+	// 是否展示为圆角卡片风格
 	inset: {
 		type: Boolean,
 		default: false
@@ -15,17 +15,17 @@ const props = defineProps({
 
 const className = computed(() => {
 	let str = 'uvan-cell-group'
-	if (props.inset)  str += ' uvan-cell-group--inset'
+	if (props.inset) str += ' uvan-cell-group--inset'
 	return str
 })
 </script>
 <template>
-  <view :class="className">
-    <view v-if="props.title" class="uvan-cell-group__title">{{props.title}}</view>
-    <view class="uvan-cell-group__main uvan-hairline--top-bottom">
-      <slot></slot>
-    </view>
-  </view>
+	<view :class="className">
+		<view v-if="props.title" class="uvan-cell-group__title">{{props.title}}</view>
+		<view class="uvan-cell-group__main uvan-hairline--top-bottom">
+			<slot></slot>
+		</view>
+	</view>
 </template>
 <style lang="less" scoped>
   @import url('./variable.less');

@@ -1,54 +1,68 @@
 module.exports = {
-	'env': {
-		'browser': true,
-		'es2021': true,
-		'node': true,
+	env: {
+		browser: true,
+		es2021: true,
+		node: true,
 		'vue/setup-compiler-macros': true
 	},
-	'extends': [
-		'eslint:recommended',
+	extends: [
 		'plugin:vue/vue3-essential',
-		'@vue/typescript/recommended',
-		'plugin:@typescript-eslint/recommended'
+		'standard'
 	],
-	parser: 'vue-eslint-parser',
-	'parserOptions': {
-		'ecmaVersion': 'latest',
-		'parser': '@typescript-eslint/parser',
-		'sourceType': 'module'
+	parserOptions: {
+		ecmaVersion: 'latest',
+		parser: '@typescript-eslint/parser',
+		sourceType: 'module'
+
+		// ecmaVersion: 'latest',
+		// sourceType: 'module',
+		// ecmaFeatures: {
+		// 	modules: true
+		// },
+		// requireConfigFile: false,
+		// parser: '@typescript-eslint/parser'
 	},
-	'plugins': [
+	plugins: [
 		'vue',
 		'@typescript-eslint'
 	],
-	'rules': {
-		'@typescript-eslint/no-explicit-any': ['off'],
-		'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-		'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-		'vue/no-v-model-argument': 'off',
-		'space-before-function-paren': 'error',
-		'indent': [
+	rules: {
+		'no-var': 'error', // 禁止使用 var
+		'no-tabs': 'off',
+		semi: [2, 'never'],
+		'vue/html-indent': ['error', 'tab', {
+			attribute: 1,
+			baseIndent: 1,
+			closeBracket: 0,
+			alignAttributesVertically: true,
+			ignores: []
+		}],
+		indent: [1, 'tab', {
+			SwitchCase: 1
+		}],
+		'no-unused-vars': 'off',
+		'vue/max-attributes-per-line': ['error', {
+			singleline: { max: 5 },
+			multiline: { max: 5 }
+		}],
+		'vue/multi-word-component-names': [
 			'error',
-			'tab'
+			{
+				ignores: ['index'] // 需要忽略的组件名
+			}
 		],
-		'linebreak-style': [
-			'error',
-			'windows'
-		],
-		'quotes': [
-			'error',
-			'single'
-		],
-		'semi': [
-			'error',
-			'never'
-		]
+		'no-mixed-spaces-and-tabs': 0
 	},
 	globals: {
+		getApp: 'readonly',
 		uni: 'readonly',
-		getCurrentPages: 'readonly',
-		tt: 'readonly',
 		wx: 'readonly',
-		my: 'readonly'
+		tt: 'readonly',
+		getCurrentPages: 'readonly',
+		my: 'readonly',
+		requirePlugin: 'readonly',
+		requireDynamicLib: 'readonly',
+		upsdk: 'readonly',
+		swan: 'readonly'
 	}
 }

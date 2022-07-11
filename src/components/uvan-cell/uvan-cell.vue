@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<{
 const slots = useSlots()
 
 const arrowValue = computed(() => {
-	let direction = {
+	const direction = {
 		left: 'arrow-left',
 		right: 'arrow',
 		up: 'arrow-up',
@@ -43,7 +43,7 @@ const uvantCellName = computed(() => {
 	if (
 		!props.title &&
     !props.label &&
-    !slots['title'] && 
+    !slots.title &&
     props.value
 	) {
 		str += ' uvan-cell__value--alone'
@@ -53,38 +53,38 @@ const uvantCellName = computed(() => {
 
 </script>
 <template>
-  <div :class="className">
-    <div
-      class="uvan-cell__title"
-      v-if="props.title || props.label || $slots['title']"
-    >
-      <template v-if="$slots['title']">
-        <div class="uvan-cell__title-">
-          <slot name="title"></slot>
-        </div>
-      </template>
-      <template v-if="props.title || props.label">
-        <div class="uvan-cell__title-">
-          <template v-if="props.icon">
-            <uvan-icon :name="props.icon" />
-          </template>
-          {{props.title}}
-        </div>
-      </template>
-      <span class="uvan-cell__label" v-if="props.label">{{props.label}}</span>
-    </div>
-    <div :class="uvantCellName">
-      <template v-if="$slots['right-icon']">
-        <slot name="right-icon"></slot>
-      </template>
-      <template v-else>
-        {{props.value}}
-      </template>
-    </div>
-    <div v-if="isLink" class="uvan-cell__right-icon">
-      <uvan-icon :name="arrowValue" />
-    </div>
-  </div>
+	<div :class="className">
+		<div
+			class="uvan-cell__title"
+			v-if="props.title || props.label || $slots['title']"
+		>
+			<template v-if="$slots['title']">
+				<div class="uvan-cell__title-">
+					<slot name="title"></slot>
+				</div>
+			</template>
+			<template v-if="props.title || props.label">
+				<div class="uvan-cell__title-">
+					<template v-if="props.icon">
+						<uvan-icon :name="props.icon" />
+					</template>
+					{{props.title}}
+				</div>
+			</template>
+			<span class="uvan-cell__label" v-if="props.label">{{props.label}}</span>
+		</div>
+		<div :class="uvantCellName">
+			<template v-if="$slots['right-icon']">
+				<slot name="right-icon"></slot>
+			</template>
+			<template v-else>
+				{{props.value}}
+			</template>
+		</div>
+		<div v-if="isLink" class="uvan-cell__right-icon">
+			<uvan-icon :name="arrowValue" />
+		</div>
+	</div>
 </template>
 <style lang="less" scoped>
   @import url('../uvan-cell-group/variable.less');
@@ -145,7 +145,7 @@ const uvantCellName = computed(() => {
       align-items: center;
       color: var(--uvan-cell-value-color);
       word-wrap: break-word;
-      
+
       &.uvan-cell__value--alone {
         color: var(--uvan-text-color);
         justify-content: flex-start;
