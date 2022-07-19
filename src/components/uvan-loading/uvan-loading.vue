@@ -1,30 +1,18 @@
 <script lang="ts" setup>
 import { computed, PropType } from 'vue'
 
-const props = defineProps({
-	color: {
-		type: String,
-		default: ''
-	},
-	type: {
-		type: String as PropType<'circular' | 'spinner'>,
-		default: 'circular'
-	},
-	// 加载图标大小，默认单位为 rpx
-	size: {
-		type: [Number, String],
-		default: ''
-	},
-	// 垂直排序
-	vertical: {
-		type: Boolean,
-		default: false
-	},
-	// 文案颜色
-	textColor: {
-		type: String,
-		default: '#c9c9c9'
-	}
+const props = withDefaults(defineProps<{
+  color?: string
+  type?: 'circular' | 'spinner'
+  size?: number | string // 加载图标大小，默认单位为 rpx
+  vertical?: boolean
+  text?: string // 加载文案
+  textColor?: string // 文案颜色
+}>(), {
+	type: 'circular',
+	size: '24px',
+	vertical: false,
+	textColor: '#c9c9c9'
 })
 
 const uvanLoadingStyle = computed(() => {
@@ -92,8 +80,8 @@ const loadingTextColor = computed(() => {
 				<text class="uvan-loading__line uvan-loading__line--12"></text>
 			</template>
 		</view>
-		<text v-if="$slots.default" class="uvan-loading__text" :style="loadingTextColor">
-			<slot></slot>
+		<text v-if="props.text" class="uvan-loading__text" :style="loadingTextColor">
+			{{props.text}}
 		</text>
 	</view>
 </template>

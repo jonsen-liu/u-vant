@@ -36,6 +36,12 @@
 			}
 		},
 		{
+			"path": "pages/layout/index",
+			"style": {
+				"navigationBarTitleText": "layout 布局"
+			}
+		},
+		{
 			"path": "pages/loading/index",
 			"style": {
 				"navigationBarTitleText": "Loading 加载"

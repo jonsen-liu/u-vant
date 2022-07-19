@@ -15,6 +15,10 @@ const navList = ref([
 			{
 				name: 'Icon 图标',
 				path: '/pages/icon/index'
+			},
+			{
+				name: 'Layout 布局',
+				path: '/pages/layout/index'
 			}
 		]
 	},

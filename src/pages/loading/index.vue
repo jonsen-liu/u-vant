@@ -27,18 +27,24 @@ const props = defineProps({
 		</view>
 		<view class="uvan-doc-demo-block__title">加载文案</view>
 		<view class="uvan-doc-demo-group">
-			<uvan-loading class="demo-uvan-loading" size="24px">加载中</uvan-loading>
-			<uvan-loading class="demo-uvan-loading" type="spinner" size="24px">加载中</uvan-loading>
+			<uvan-loading class="demo-uvan-loading" size="24px" text="加载中"></uvan-loading>
+			<uvan-loading class="demo-uvan-loading" type="spinner" size="24px" text="加载中" ></uvan-loading>
 		</view>
 		<view class="uvan-doc-demo-block__title">垂直排列</view>
 		<view class="uvan-doc-demo-group">
-			<uvan-loading class="demo-uvan-loading" size="24px" vertical>加载中</uvan-loading>
-			<uvan-loading class="demo-uvan-loading" type="spinner" size="24px" vertical>加载中</uvan-loading>
+			<uvan-loading class="demo-uvan-loading" size="24px" vertical text="加载中"></uvan-loading>
+			<uvan-loading class="demo-uvan-loading" type="spinner" size="24px" vertical text="加载中"></uvan-loading>
 		</view>
 		<view class="uvan-doc-demo-block__title">自定义文本颜色</view>
 		<view class="uvan-doc-demo-group">
-			<uvan-loading class="demo-uvan-loading" color="#1989fa" size="24px" vertical>加载中</uvan-loading>
-			<uvan-loading class="demo-uvan-loading" type="spinner" text-color="#1989fa" size="24px" vertical>加载中...</uvan-loading>
+			<uvan-loading class="demo-uvan-loading" color="#1989fa" size="24px" vertical text="加载中"></uvan-loading>
+			<uvan-loading
+				class="demo-uvan-loading"
+				type="spinner"
+				text-color="#1989fa"
+				size="24px"
+				vertical
+				text="加载中..."></uvan-loading>
 		</view>
 	</view>
 </template>
