@@ -19,12 +19,20 @@ const navList = ref([
 			{
 				name: 'Layout 布局',
 				path: '/pages/layout/index'
+			},
+			{
+				name: 'Popup 弹出层',
+				path: '/pages/popup/index'
 			}
 		]
 	},
 	{
 		title: '反馈组件',
 		list: [
+			{
+				name: 'Overlay 遮罩层',
+				path: '/pages/overlay/index'
+			},
 			{
 				name: 'Loading 加载',
 				path: '/pages/loading/index'

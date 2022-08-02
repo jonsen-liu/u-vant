@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { computed, inject, onMounted } from 'vue'
+import { computed, inject } from 'vue'
 
 const injectGutter = inject('gutter')
 const props = withDefaults(defineProps<{
   span: string | number
 	offset: string | number
-}>(), {
-
-})
-
+}>(), {})
 // const options = {
 // 	virtualHost: true
 // }
@@ -28,14 +25,17 @@ const colStyle = computed(() => {
 	return `padding: 0 ${n}rpx 0 ${n}rpx`
 })
 
-onMounted(() => {
-	console.log(injectGutter)
-})
+// onMounted(() => {
+// 	console.log(injectGutter)
+// })
 
 </script>
 
 <template>
-	<view :class="['uvan-col', classNameSpan, classNameOffset]" :style="colStyle">
+	<view
+		:class="['uvan-col', classNameSpan, classNameOffset]"
+		:style="colStyle"
+	>
 		<slot/>
 	</view>
 </template>

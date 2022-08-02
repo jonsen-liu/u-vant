@@ -19,6 +19,8 @@ const props = withDefaults(defineProps<{
 	arrowDirection: 'right'
 })
 
+const emit = defineEmits(['click'])
+
 const slots = useSlots()
 
 const arrowValue = computed(() => {
@@ -51,9 +53,16 @@ const uvantCellName = computed(() => {
 	return str
 })
 
+const clickCell = () => {
+	emit('click')
+}
+
 </script>
 <template>
-	<div :class="className">
+	<div
+		:class="className"
+		@click="clickCell"
+	>
 		<div
 			class="uvan-cell__title"
 			v-if="props.title || props.label || $slots['title']"
